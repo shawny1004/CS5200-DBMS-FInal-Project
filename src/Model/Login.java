@@ -7,11 +7,11 @@ public class Login {
   private int userID;
   private String username;
   private String password;
-  private int active;
+  private boolean active;
   private Timestamp blockUntil;
   private String userTypeName;
 
-  public Login(int userID, String username, String password, int active,
+  public Login(int userID, String username, String password, boolean active,
       Timestamp blockUntil, String userTypeName) {
     this.userID = userID;
     this.username = username;
@@ -21,7 +21,7 @@ public class Login {
     this.userTypeName = userTypeName;
   }
 
-  public Login(String username, String password, int active, Timestamp blockUntil,
+  public Login(String username, String password, boolean active, Timestamp blockUntil,
       String userTypeName) {
     this.username = username;
     this.password = password;
@@ -54,11 +54,11 @@ public class Login {
     this.password = password;
   }
 
-  public int getActive() {
+  public boolean isActive() {
     return active;
   }
 
-  public void setActive(int active) {
+  public void setActive(boolean active) {
     this.active = active;
   }
 

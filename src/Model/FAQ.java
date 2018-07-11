@@ -9,11 +9,11 @@ public class FAQ {
   private String question;
   private String answer;
   private Timestamp lastEditTime;
-  private int available;
+  private boolean available;
   private int userID;
 
   public FAQ(int faqID, int projectID, String question, String answer,
-      Timestamp lastEditTime, int available, int userID) {
+      Timestamp lastEditTime, boolean available, int userID) {
     this.faqID = faqID;
     this.projectID = projectID;
     this.question = question;
@@ -23,7 +23,8 @@ public class FAQ {
     this.userID = userID;
   }
 
-  public FAQ(int projectID, String question, String answer, Timestamp lastEditTime, int available,
+  public FAQ(int projectID, String question, String answer, Timestamp lastEditTime,
+      boolean available,
       int userID) {
     this.projectID = projectID;
     this.question = question;
@@ -73,11 +74,11 @@ public class FAQ {
     this.lastEditTime = lastEditTime;
   }
 
-  public int getAvailable() {
+  public boolean isAvailable() {
     return available;
   }
 
-  public void setAvailable(int available) {
+  public void setAvailable(boolean available) {
     this.available = available;
   }
 
