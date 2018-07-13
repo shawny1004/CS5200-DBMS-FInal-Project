@@ -13,13 +13,13 @@
   <body>
   <form method="post" action="login">
     <input type="text" name="UserName"> Username </input>
-    <input type="password" name="Password"> Password </input>
+    <input type="password" name="PassWord"> Password </input>
     <button type="submit">LogIn</button>
   </form>
 
   <form method="post" action="newUser">
-    <input type="text" name="UserName"> Username </input>
-    <input type="password" name="PassWord"> Password </input>
+    <input type="text" id="newUserName"> Username </input>
+    <input type="password" id="newPassWord"> Password </input>
     <button type="submit">Create Your Account</button>
   </form>
 

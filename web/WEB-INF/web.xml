@@ -23,7 +23,7 @@
 
   <servlet>
     <servlet-name>mainPageServlet</servlet-name>
-    <servlet-class>Servlets.LoginServlet</servlet-class>
+    <servlet-class>Servlets.MainPageServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>mainPageServlet</servlet-name>

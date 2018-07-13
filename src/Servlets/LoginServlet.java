@@ -16,13 +16,16 @@ public class LoginServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
     String username = req.getParameter("UserName");
     String password = req.getParameter("PassWord");
+    System.out.println(username);
+    System.out.println(password);
     LoginDao loginDao = LoginDao.getInstance();
+
 
     try {
       if (loginDao.login(username, password)) {
         int userID = loginDao.getUserIDbyUserName(username);
         HttpSession session = req.getSession();
-        session.setAttribute("username", username);
+        session.setAttribute("UserName", username);
         session.setAttribute("userID",userID);
         resp.sendRedirect("./MainPage");
       } else {

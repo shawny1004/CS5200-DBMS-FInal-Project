@@ -14,14 +14,7 @@ public class NewUserServlet extends HttpServlet {
     String password = req.getParameter("PassWord");
     LoginDao loginDao = LoginDao.getInstance();
     try {
-      if (loginDao.login(username, password)) {
-        HttpSession session = req.getSession();
-        session.setAttribute("username", username);
-        resp.sendRedirect("./MainPage");
-      } else {
-        Writer writer = resp.getWriter();
-        ((PrintWriter) writer).print("Login Failed");
-      }
+
 
     } catch (Exception e) {
       System.out.println(e);
