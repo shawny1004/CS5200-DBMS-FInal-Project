@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class LoginDao {
 
   //singleton
@@ -71,6 +72,37 @@ public class LoginDao {
       }
       if (ps != null) {
         ps.close();
+      }
+    }
+  }
+
+  public int getUserIDbyUserName(String Username) throws SQLException {
+    String ps = "select * from Login where UserName = ?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(ps);
+      selectStmt.setString(1, Username);
+      results = selectStmt.executeQuery();
+      if(results.next()) {
+        return results.getInt(1);
+      }else{
+        return -1;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if(connection != null) {
+        connection.close();
+      }
+      if(selectStmt != null) {
+        selectStmt.close();
+      }
+      if(results != null) {
+        results.close();
       }
     }
   }

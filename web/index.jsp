@@ -11,7 +11,7 @@
     <title>Talkie Movie ^_^</title>
   </head>
   <body>
-  <form method="get" action="login">
+  <form method="post" action="login">
     <input type="text" name="UserName"> Username </input>
     <input type="password" name="Password"> Password </input>
     <button type="submit">LogIn</button>

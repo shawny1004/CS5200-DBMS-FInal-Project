@@ -22,8 +22,17 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>mainPageServlet</servlet-name>
+    <servlet-class>Servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mainPageServlet</servlet-name>
+    <url-pattern>/MainPage</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>newUserServlet</servlet-name>
-    <servlet-class>Servlets.newUserServlet</servlet-class>
+    <servlet-class>Servlets.NewUserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>newUserServlet</servlet-name>
