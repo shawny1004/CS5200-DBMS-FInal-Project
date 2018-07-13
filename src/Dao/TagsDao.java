@@ -1,6 +1,6 @@
 package Dao;
 
-import Model.Notification;
+
 import Model.Tags;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -96,13 +96,13 @@ public class TagsDao {
 
   public List<Tags> getTagsBysimilarTagName(String tagName) throws SQLException {
     List<Tags> tag = new ArrayList<Tags>();
-    String selectNotification = "select * from tags where TagName LIKE '%?%';";
+    String ps = "select * from tags where TagName LIKE '%?%';";
     Connection connection = null;
     PreparedStatement selectStmt = null;
     ResultSet results = null;
     try {
       connection = connectionManager.getConnection();
-      selectStmt = connection.prepareStatement(selectNotification);
+      selectStmt = connection.prepareStatement(ps);
       selectStmt.setString(1, tagName);
       results = selectStmt.executeQuery();
       while(results.next()) {
