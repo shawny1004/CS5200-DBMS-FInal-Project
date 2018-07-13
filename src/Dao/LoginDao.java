@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class LoginDao {
+
   //singleton
   public ConnectionManager connectionManager;
 
@@ -38,10 +39,10 @@ public class LoginDao {
       connection = connectionManager.getConnection();
       //check if this username already exist, if already exist, return null
       checkps = connection.prepareStatement(checkQuery);
-      checkps.setString(1,login.getUsername());
-      checkResult= checkps.executeQuery();
-      if(checkResult.next()){
-        System.out.println("Username "+ login.getUsername() + " already exists!");
+      checkps.setString(1, login.getUsername());
+      checkResult = checkps.executeQuery();
+      if (checkResult.next()) {
+        System.out.println("Username " + login.getUsername() + " already exists!");
         return null;
       }
       ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -59,8 +60,46 @@ public class LoginDao {
         throw new SQLException("Unable to retrieve auto-generated key.");
       }
       login.setUserID(userID);
-      System.out.println("Successfully created User ID: "+ userID);
+      System.out.println("Successfully created User ID: " + userID);
       return login;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (ps != null) {
+        ps.close();
+      }
+    }
+  }
+
+  public boolean login(String Username, String Password) throws SQLException {
+
+    String query = "SELECT * FROM Login WHERE Username =? AND Password = ?;";
+    Connection connection = null;
+    PreparedStatement ps = null;
+    ResultSet resultKey = null;
+    try {
+      connection = connectionManager.getConnection();
+      ps = connection.prepareStatement(query);
+      ps.setString(1, Username);
+      ps.setString(2, Password);
+      resultKey=ps.executeQuery();
+      //Check if there's any Match
+      if (resultKey.next()) {
+        //If there's more than one Match, means repeated Username and password,  alert and stop login
+        if (resultKey.next()) {
+          System.out.println("REPEATED USERNAME FOUND FOR USERNAME "+ Username);
+          return false;
+        }
+        return true;
+      } else {
+        //PASSWORD WRONG
+        System.out.println("Failed to login");
+        return false;
+      }
     } catch (SQLException e) {
       e.printStackTrace();
       throw e;
@@ -85,7 +124,7 @@ public class LoginDao {
       ps.setString(1, newPassword);
       ps.setString(2, Username);
       ps.executeUpdate();
-      System.out.println("Successfully update password for UserName: "+ Username);
+      System.out.println("Successfully update password for UserName: " + Username);
     } catch (SQLException e) {
       e.printStackTrace();
       throw e;
@@ -110,7 +149,7 @@ public class LoginDao {
       ps.setBoolean(1, active);
       ps.setString(2, userName);
       ps.executeUpdate();
-      System.out.println("Successfully update Status for UserName: "+ userName);
+      System.out.println("Successfully update Status for UserName: " + userName);
     } catch (SQLException e) {
       e.printStackTrace();
       throw e;
@@ -135,7 +174,8 @@ public class LoginDao {
       ps.setDate(1, blockTo);
       ps.setString(2, userName);
       ps.executeUpdate();
-      System.out.println("Successfully update Block time to "+blockTo.toString()+" for UserName: "+ userName);
+      System.out.println(
+          "Successfully update Block time to " + blockTo.toString() + " for UserName: " + userName);
     } catch (SQLException e) {
       e.printStackTrace();
       throw e;
