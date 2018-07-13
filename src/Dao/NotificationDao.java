@@ -26,14 +26,14 @@ public class NotificationDao {
 }
 
   public Notification create(Notification notification) throws SQLException {
-    String insertReview =
+    String insertNotification =
         "insert into notification(CreateTime,Content,Viewed,Type,UserID) VALUES(?,?,?,?,?);";
     Connection connection = null;
     PreparedStatement insertStmt = null;
     ResultSet resultKey = null;
     try {
       connection = connectionManager.getConnection();
-      insertStmt = connection.prepareStatement(insertReview,
+      insertStmt = connection.prepareStatement(insertNotification,
           Statement.RETURN_GENERATED_KEYS);
       insertStmt.setTimestamp(1, notification.getCreateTime());
       insertStmt.setString(2, notification.getContent());
@@ -67,13 +67,13 @@ public class NotificationDao {
     }
   }
     public Notification getNotificationByID(int notificationID) throws SQLException {
-      String selectReview = "select * from notification where notificationID=?;";
+      String selectNotification = "select * from notification where notificationID=?;";
       Connection connection = null;
       PreparedStatement selectStmt = null;
       ResultSet results = null;
       try {
         connection = connectionManager.getConnection();
-        selectStmt = connection.prepareStatement(selectReview);
+        selectStmt = connection.prepareStatement(selectNotification);
         selectStmt.setInt(1, notificationID);
         results = selectStmt.executeQuery();
         if(results.next()) {
@@ -135,12 +135,12 @@ public class NotificationDao {
   public void view(int notificationID ) throws SQLException {
     String updateview = "update notification set Viewed=1 where NotificationID = ?;";
     Connection connection = null;
-    PreparedStatement deleteStmt = null;
+    PreparedStatement updateStmt = null;
     try {
       connection = connectionManager.getConnection();
-      deleteStmt = connection.prepareStatement(updateview);
-      deleteStmt.setInt(1, notificationID);
-      deleteStmt.executeUpdate();
+      updateStmt = connection.prepareStatement(updateview);
+      updateStmt.setInt(1, notificationID);
+      updateStmt.executeUpdate();
       System.out.println("Successfully Viewed " + notificationID);
     } catch (SQLException e) {
       e.printStackTrace();
@@ -149,8 +149,8 @@ public class NotificationDao {
       if(connection != null) {
         connection.close();
       }
-      if(deleteStmt != null) {
-        deleteStmt.close();
+      if(updateStmt != null) {
+        updateStmt.close();
       }
     }
   }
