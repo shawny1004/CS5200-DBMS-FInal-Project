@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsersDao {
 
@@ -124,7 +126,37 @@ public class UsersDao {
       }
     }
   }
-
+  public List<Users> getUsersByUsername(String username) throws SQLException {
+    List<Users> user = new ArrayList<Users>();
+    String ps = "select * from users where nickname = ?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(ps);
+      selectStmt.setString(1, username);
+      results = selectStmt.executeQuery();
+      while(results.next()) {
+        user.add( new Users(results.getInt(1),results.getString(2),results.getString(3),
+            results.getBoolean(4)));
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if(connection != null) {
+        connection.close();
+      }
+      if(selectStmt != null) {
+        selectStmt.close();
+      }
+      if(results != null) {
+        results.close();
+      }
+    }
+    return user;
+  }
 
 
 }
