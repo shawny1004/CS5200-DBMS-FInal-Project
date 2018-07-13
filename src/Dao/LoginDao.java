@@ -26,32 +26,57 @@ public class LoginDao {
   }
 
   public Login create(Login login) throws SQLException {
+    String checkQuery = "SELECT * FROM Login WHERE UserName = ?;";
     String query = "INSERT INTO Login(UserName,Password,Active,BlockUntil,UserTypeName) VALUES(?,?,?,?,?);";
     Connection connection = null;
+    PreparedStatement checkps = null;
+    ResultSet checkResult = null;
     PreparedStatement ps = null;
     ResultSet resultKey = null;
     try {
       connection = connectionManager.getConnection();
       ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-      ps.setInt(1, comment.getProjectID());
-      ps.setString(2, comment.getContent());
-      ps.setTimestamp(3, comment.getCreateTime());
-      ps.setBoolean(4, comment.isAvailable());
-      ps.setInt(5, comment.getReplyToCommentID());
-      ps.setInt(6, comment.getDislikedCount());
-      ps.setInt(7, comment.getLikedCount());
-      ps.setInt(8, comment.getUserID());
-      ps.executeUpdate();
+      ps.setString(1, login.getUsername());
+      ps.setString(2, login.getPassword());
+      ps.setBoolean(3, login.isActive());
+      ps.setDate(4, login.getBlockUntil());
+      ps.setString(5, login.getUserTypeName());
+      ps.execute();
       resultKey = ps.getGeneratedKeys();
-      int commentID = -1;
+      int userID = -1;
       if (resultKey.next()) {
-        commentID = resultKey.getInt(1);
+        userID = resultKey.getInt(1);
       } else {
         throw new SQLException("Unable to retrieve auto-generated key.");
       }
-      comment.setCommentID(commentID);
-      System.out.println("Successfully created comment ID: "+ commentID);
-      return comment;
+      login.setUserID(userID);
+      System.out.println("Successfully created User ID: "+ userID);
+      return login;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (ps != null) {
+        ps.close();
+      }
+    }
+  }
+
+  public void changePassword(String Username, String newPassword) throws SQLException {
+    String query = "UPDATE Login SET Password = ? WHERE UserName = ?;";
+    Connection connection = null;
+    PreparedStatement ps = null;
+    ResultSet resultKey = null;
+    try {
+      connection = connectionManager.getConnection();
+      ps = connection.prepareStatement(query);
+      ps.setString(1, newPassword);
+      ps.setString(2, Username);
+      ps.executeUpdate();
+      System.out.println("Successfully update password for UserName: "+ Username);
     } catch (SQLException e) {
       e.printStackTrace();
       throw e;

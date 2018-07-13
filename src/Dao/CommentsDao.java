@@ -281,4 +281,24 @@ public class CommentsDao {
       }
     }
   }
+
+  // delete comment by userId
+  public void deleteCommenByUserId(int userId) throws SQLException {
+    String deleteComment = "DELETE FROM Comments WHERE UserID = ?;";
+    System.out.println("Delete comment by useID.");
+    System.out.println(deleteComment);
+    Connection connection = null;
+    PreparedStatement deleteStmt = null;
+    try {
+      connection = connectionManager.getConnection();
+      deleteStmt = connection.prepareStatement(deleteComment);
+      deleteStmt.setInt(1, userId);
+      deleteStmt.executeUpdate();
+      System.out.println("Successfully deleted comment by User:"+ userId);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      connection.close();
+    }
+  }
 }
