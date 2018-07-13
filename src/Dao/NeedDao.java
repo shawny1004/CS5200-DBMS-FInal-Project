@@ -96,7 +96,7 @@ public class NeedDao {
         results.close();
       }
     }
-    return null;
+    return result;
   }
 
   public List<Need> getNeedsByProjectID(int projectID) throws SQLException {
@@ -129,7 +129,7 @@ public class NeedDao {
         results.close();
       }
     }
-    return null;
+    return result;
   }
 
   public List<Need> getNeedsByType(String Type) throws SQLException {
@@ -148,6 +148,7 @@ public class NeedDao {
             results.getString(4), results.getString(5), results.getInt(6), results.getTimestamp(7),
             results.getBoolean(8)));
       }
+      return result;
     } catch (SQLException e) {
       e.printStackTrace();
       throw e;
@@ -162,7 +163,7 @@ public class NeedDao {
         results.close();
       }
     }
-    return null;
+
   }
 
   public void updateNeed(int NeedID, Need newNeed) throws SQLException {
@@ -224,7 +225,7 @@ public class NeedDao {
       connection = connectionManager.getConnection();
       selectStmt = connection.prepareStatement(selectNeed);
       selectStmt.setInt(1, NeedID);
-      selectStmt.executeUpdate();
+      selectStmt.execute();
       System.out.println("Successfully deleted Need " + NeedID);
     } catch (SQLException e) {
       e.printStackTrace();

@@ -96,7 +96,7 @@ public class TagsDao {
 
   public List<Tags> getTagsBysimilarTagName(String tagName) throws SQLException {
     List<Tags> tag = new ArrayList<Tags>();
-    String ps = "select * from tags where TagName LIKE '%?%';";
+    String ps = "select * from tags where TagName LIKE %?%;";
     Connection connection = null;
     PreparedStatement selectStmt = null;
     ResultSet results = null;
