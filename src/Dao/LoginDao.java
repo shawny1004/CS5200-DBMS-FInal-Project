@@ -3,6 +3,7 @@ package Dao;
 import Model.*;
 import Model.Comments;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,12 +30,20 @@ public class LoginDao {
     String checkQuery = "SELECT * FROM Login WHERE UserName = ?;";
     String query = "INSERT INTO Login(UserName,Password,Active,BlockUntil,UserTypeName) VALUES(?,?,?,?,?);";
     Connection connection = null;
-    PreparedStatement checkps = null;
+    PreparedStatement checkps;
     ResultSet checkResult = null;
     PreparedStatement ps = null;
     ResultSet resultKey = null;
     try {
       connection = connectionManager.getConnection();
+      //check if this username already exist, if already exist, return null
+      checkps = connection.prepareStatement(checkQuery);
+      checkps.setString(1,login.getUsername());
+      checkResult= checkps.executeQuery();
+      if(checkResult.next()){
+        System.out.println("Username "+ login.getUsername() + " already exists!");
+        return null;
+      }
       ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
       ps.setString(1, login.getUsername());
       ps.setString(2, login.getPassword());
@@ -77,6 +86,56 @@ public class LoginDao {
       ps.setString(2, Username);
       ps.executeUpdate();
       System.out.println("Successfully update password for UserName: "+ Username);
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (ps != null) {
+        ps.close();
+      }
+    }
+  }
+
+  public void SetActive(String userName, boolean active) throws SQLException {
+    String query = "UPDATE Login SET Active = ? WHERE UserName = ?;";
+    Connection connection = null;
+    PreparedStatement ps = null;
+    ResultSet resultKey = null;
+    try {
+      connection = connectionManager.getConnection();
+      ps = connection.prepareStatement(query);
+      ps.setBoolean(1, active);
+      ps.setString(2, userName);
+      ps.executeUpdate();
+      System.out.println("Successfully update Status for UserName: "+ userName);
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (ps != null) {
+        ps.close();
+      }
+    }
+  }
+
+  public void SetBlockUntil(String userName, Date blockTo) throws SQLException {
+    String query = "UPDATE Login SET BlockUntil = ? WHERE UserName = ?;";
+    Connection connection = null;
+    PreparedStatement ps = null;
+    ResultSet resultKey = null;
+    try {
+      connection = connectionManager.getConnection();
+      ps = connection.prepareStatement(query);
+      ps.setDate(1, blockTo);
+      ps.setString(2, userName);
+      ps.executeUpdate();
+      System.out.println("Successfully update Block time to "+blockTo.toString()+" for UserName: "+ userName);
     } catch (SQLException e) {
       e.printStackTrace();
       throw e;
