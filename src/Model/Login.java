@@ -1,6 +1,6 @@
 package Model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class Login {
 
@@ -8,11 +8,11 @@ public class Login {
   private String username;
   private String password;
   private boolean active;
-  private Timestamp blockUntil;
+  private Date blockUntil;
   private String userTypeName;
 
   public Login(int userID, String username, String password, boolean active,
-      Timestamp blockUntil, String userTypeName) {
+      Date blockUntil, String userTypeName) {
     this.userID = userID;
     this.username = username;
     this.password = password;
@@ -21,7 +21,7 @@ public class Login {
     this.userTypeName = userTypeName;
   }
 
-  public Login(String username, String password, boolean active, Timestamp blockUntil,
+  public Login(String username, String password, boolean active, Date blockUntil,
       String userTypeName) {
     this.username = username;
     this.password = password;
@@ -62,11 +62,11 @@ public class Login {
     this.active = active;
   }
 
-  public Timestamp getBlockUntil() {
+  public Date getBlockUntil() {
     return blockUntil;
   }
 
-  public void setBlockUntil(Timestamp blockUntil) {
+  public void setBlockUntil(Date blockUntil) {
     this.blockUntil = blockUntil;
   }
 

@@ -16,13 +16,13 @@ try{
   ((PrintWriter) writer).print("hahaahahah");
   String username= req.getParameter("UserName");
   String password = req.getParameter("Password");
-  if(LoginDao.geUserbyUsername(username)){
-    if(Login.getPassword()==password){
-      resp.sendRedirect("./login.jsp");
-    }
-  }else{
-    ((PrintWriter) writer).print("loginfail");
-  }
+//  if(LoginDao.geUserbyUsername(username)){
+//    if(Login.getPassword()==password){
+//      resp.sendRedirect("./login.jsp");
+//    }
+//  }else{
+//    ((PrintWriter) writer).print("loginfail");
+//  }
 
   ((PrintWriter) writer).print("Your Username is "+ username);
   ((PrintWriter) writer).print("Your Password is "+ password);
