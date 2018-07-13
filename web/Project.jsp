@@ -11,6 +11,15 @@
 
 <head>
     <title>Project ${currentProject.getProjectID()}</title>
+    <script>
+      function like1() {
+        <%ProjectDao.getInstance().addLikeBy1(((Project)request.getAttribute("currentProject")).getProjectID());%>
+      }
+
+      function dislike1() {
+        <%ProjectDao.getInstance().addDislikeBy1(((Project)request.getAttribute("currentProject")).getProjectID());%>
+      }
+    </script>
 </head>
 
 <body>
@@ -19,15 +28,11 @@
 <h2>${projectUserName}</h2>
 
 <h3>${currentProject.getLikedCount()}</h3>
-<button onclick=<%ProjectDao.getInstance().addLikeBy1(((Project)request.getAttribute("currentProject")).getProjectID());%>}>
-    Like
-</button>
+<button onclick=like1()>Like</button>
 <h3>${currentProject.getDislikedCount()}</h3>
-<button onclick=<%ProjectDao.getInstance().addDislikeBy1(((Project)request.getAttribute("currentProject")).getProjectID());%>}>
-    DisLike
-</button>
+<button onclick=dislike1()>DisLike</button>
 
-<textarea width: 800px; height: 400px;> ${currentProject.getDescription()}
+<textarea id="description" rows="15" cols="300"> ${currentProject.getDescription()} </textarea>
 
 
 </body>

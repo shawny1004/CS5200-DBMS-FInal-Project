@@ -12,6 +12,11 @@
 
 <head>
     <title>My HomePage</title>
+    <SCRIPT>
+      function deleteNoti() {
+
+      }
+    </SCRIPT>
 </head>
 
 <body>
@@ -25,20 +30,25 @@
         <td>Content</td>
         <td>Viewed</td>
         <td>Type</td>
+        <td>Delete</td>
     </tr>
 
     <c:forEach items="${myNoti}" var="item">
-    <tr>
-        <td>${item.getNotificationID()}</td>
-        <td>${item.getCreateTime()}</td>
-        <td>${item.getContent()}</td>
-        <td>${item.isViewed()}</td>
-        <td>${item.getType()}</td>
-    </tr>
+        <tr>
+            <td>${item.getNotificationID()}</td>
+            <td>${item.getCreateTime()}</td>
+            <td>${item.getContent()}</td>
+            <td>${item.isViewed()}</td>
+            <td>${item.getType()}</td>
+            <td>
+                <button onclick=deleteNoti()>Delete</button>
+            </td>
+        </tr>
     </c:forEach>
 </table>
 
-<p> My Projects </p> <button formaction="./CreateProject"> Create new Project </button>
+<p> My Projects </p>
+<button onClick="javascript:window.location='./CreateProject.jsp'"> Create new Project</button>
 <table border="1">
     <tr>
         <td>ProjectID</td>
@@ -63,7 +73,7 @@
 
 <form action="./SearchProject">
     <textarea>search</textarea>
-    <button type="submit"> Search! </button>
+    <button type="submit"> Search!</button>
 </form>
 
 </body>
