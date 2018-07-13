@@ -8,9 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Talkie Movie ^_^</title>
   </head>
   <body>
-  $END$
+  <form method="get" action="abc">
+    <input type="text" name="UserName"> Username </input>
+    <input type="password" name="Password"> Password </input>
+    <button type="submit">LogIn</button>
+  </form>
+
+  <form method="post" action="/Servlets/RegistrationServlet">
+    <input type="text" name="UserName"> Username </input>
+    <input type="password" name="Password"> Password </input>
+    <button type="submit">Create Your Account</button>
+  </form>
+
   </body>
 </html>
