@@ -52,7 +52,7 @@
     <c:forEach items="${myProjects}" var="project">
         <tr>
             <td>${project.getProjectID()}</td>
-            <td><a href="projectItem${project.getProjectID()}"> ${project.getTitle()} </a>></td>
+            <td><a href="projectItem/${project.getProjectID()}"> ${project.getTitle()} </a>></td>
             <td>${project.getDescription()}</td>
             <td>${project.getCreateTime()}</td>
             <td>${project.getDislikedCount()}</td>

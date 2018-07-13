@@ -107,6 +107,37 @@ public class LoginDao {
     }
   }
 
+  public String getUserNamebyUserID(int userID) throws SQLException {
+    String ps = "select * from Login where UserID = ?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(ps);
+      selectStmt.setInt(1, userID);
+      results = selectStmt.executeQuery();
+      if(results.next()) {
+        return results.getString(2);
+      }else{
+        return null;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if(connection != null) {
+        connection.close();
+      }
+      if(selectStmt != null) {
+        selectStmt.close();
+      }
+      if(results != null) {
+        results.close();
+      }
+    }
+  }
+
   public boolean login(String Username, String Password) throws SQLException {
 
     String query = "SELECT * FROM Login WHERE Username =? AND Password = ?;";

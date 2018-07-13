@@ -198,6 +198,39 @@ public class ProjectDao {
     return project;
   }
 
+  public Project getProjectByID(int projectID) throws SQLException {
+    String ps = "select * from project where ProjectID = ?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(ps);
+      selectStmt.setInt(1, projectID);
+      results = selectStmt.executeQuery();
+      if(results.next()) {
+        return new Project(results.getInt(1),results.getString(2),results.getString(3),
+            results.getTimestamp(4), results.getInt(5),results.getInt(6),results.getBoolean(7),
+            results.getInt(8));
+      }else{
+        return null;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if(connection != null) {
+        connection.close();
+      }
+      if(selectStmt != null) {
+        selectStmt.close();
+      }
+      if(results != null) {
+        results.close();
+      }
+    }
+  }
+
   public List<Project> getProjectsBySimilarName(String title) throws SQLException {
     List<Project> project = new ArrayList<Project>();
     String ps = "select * from project where Title LIKE '%?%';";

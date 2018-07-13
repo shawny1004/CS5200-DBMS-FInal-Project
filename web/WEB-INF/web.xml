@@ -39,4 +39,13 @@
     <url-pattern>/newUser</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>projectItemServlet</servlet-name>
+    <servlet-class>Servlets.ProjectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>projectItemServlet</servlet-name>
+    <url-pattern>/projectItem/*</url-pattern>
+  </servlet-mapping>
+
 </web-app>
