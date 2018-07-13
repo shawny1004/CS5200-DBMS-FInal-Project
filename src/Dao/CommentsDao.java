@@ -254,7 +254,7 @@ public class CommentsDao {
     }
   }
 
-  public void delete(int commentID) throws SQLException {
+  public void deleteCommentByCommentID(int commentID) throws SQLException {
 
     String selectComments = "DELETE FROM Comments WHERE CommentID = ?;";
     Connection connection = null;
