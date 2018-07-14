@@ -22,11 +22,6 @@ public class CreditCardDao {
         return instance;
     }
 
-//    private String cardNumber;
-//    private Timestamp expiration;
-//    private String cvv;
-//    private int userID;
-
     //insert new credit card information
     public CreditCard create(CreditCard creditCard) throws SQLException {
 
