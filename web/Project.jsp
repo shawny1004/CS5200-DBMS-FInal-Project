@@ -7,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <head>
@@ -34,6 +35,20 @@
 
 <textarea id="description" rows="15" cols="300"> ${currentProject.getDescription()} </textarea>
 
+<p>Tags with this Project</p>
+<table border="1">
+    <tr>
+        <td>TagName</td>
+        <td>TagDescription</td>
+    </tr>
+
+    <c:forEach items="${tagsList}" var="item">
+        <tr>
+            <td>${item.getTagName()}</td>
+            <td>${item.getTagDescription()}</td>
+        </tr>
+    </c:forEach>
+</table>
 
 </body>
 </html>

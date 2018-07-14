@@ -12,17 +12,13 @@
 
 <head>
     <title>My HomePage</title>
-    <SCRIPT>
-      function deleteNoti() {
-
-      }
-    </SCRIPT>
 </head>
 
 <body>
 <h1> Hello ${userName.toString()} </h1>
-
-<p> My Notification </p>
+<h1> ${changepassword.toString()} </h1>
+<h3> My Notification </h3>
+<form action = "button/deleNoti">
 <table border="1">
     <tr>
         <td>NotificationID</td>
@@ -41,13 +37,14 @@
             <td>${item.isViewed()}</td>
             <td>${item.getType()}</td>
             <td>
-                <button onclick=deleteNoti()>Delete</button>
+                <button type="submit" name="deletebutton">Delete:${item.getNotificationID()}</button>
             </td>
         </tr>
     </c:forEach>
 </table>
+</form>
 
-<p> My Projects </p>
+<h3> My Projects </h3>
 <button onClick="javascript:window.location='./CreateProject.jsp'"> Create new Project</button>
 <table border="1">
     <tr>
@@ -62,7 +59,7 @@
     <c:forEach items="${myProjects}" var="project">
         <tr>
             <td>${project.getProjectID()}</td>
-            <td><a href="projectItem/${project.getProjectID()}"> ${project.getTitle()} </a>></td>
+            <td><a href="projectItem/${project.getProjectID()}"> ${project.getTitle()} </a></td>
             <td>${project.getDescription()}</td>
             <td>${project.getCreateTime()}</td>
             <td>${project.getDislikedCount()}</td>
@@ -74,6 +71,13 @@
 <form action="./SearchProject">
     <textarea>search</textarea>
     <button type="submit"> Search!</button>
+</form>
+
+<h3>Change My Password</h3>
+<form method="post" action="changePassword">
+    OldPassword <input type="password" name="oldpassword">  </input>
+    NewPassword <input type="password" name="newpassword">  </input>
+    <button type="submit">Change</button>
 </form>
 
 </body>

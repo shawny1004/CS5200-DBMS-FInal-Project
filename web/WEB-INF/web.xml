@@ -40,12 +40,39 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>projectItemServlet</servlet-name>
-    <servlet-class>Servlets.ProjectServlet</servlet-class>
-  </servlet>
+  <servlet-name>projectItemServlet</servlet-name>
+  <servlet-class>Servlets.ProjectServlet</servlet-class>
+</servlet>
   <servlet-mapping>
     <servlet-name>projectItemServlet</servlet-name>
     <url-pattern>/projectItem/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>createProjectServlet</servlet-name>
+    <servlet-class>Servlets.CreateProjectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>createProjectServlet</servlet-name>
+    <url-pattern>/CreateProject</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>changePasswordServlet</servlet-name>
+    <servlet-class>Servlets.ChangePasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>changePasswordServlet</servlet-name>
+    <url-pattern>/changePassword</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>buttonActionServlet</servlet-name>
+    <servlet-class>Servlets.ButtonActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>buttonActionServlet</servlet-name>
+    <url-pattern>/button/*</url-pattern>
   </servlet-mapping>
 
 </web-app>
