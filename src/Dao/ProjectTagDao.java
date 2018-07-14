@@ -3,8 +3,11 @@ package Dao;
 import Model.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectTagDao {
 
@@ -102,5 +105,35 @@ public class ProjectTagDao {
     }
   }
 
+  public ArrayList<Integer> getTagsIDsByProjectID(int projectID) throws SQLException {
+    ArrayList<Integer> tags = new ArrayList<Integer>();
+    String ps = "select * from ProjectTag where ProjectID=?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(ps);
+      selectStmt.setInt(1, projectID);
+      results = selectStmt.executeQuery();
+      while(results.next()) {
+        tags.add(results.getInt(2));
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if(connection != null) {
+        connection.close();
+      }
+      if(selectStmt != null) {
+        selectStmt.close();
+      }
+      if(results != null) {
+        results.close();
+      }
+    }
+    return tags;
+  }
 
 }

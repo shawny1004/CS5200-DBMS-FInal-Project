@@ -176,18 +176,29 @@ public class LoginDao {
     }
   }
 
-  public void changePassword(String Username, String newPassword) throws SQLException {
+  public boolean changePassword(String Username,String oldPassword ,String newPassword) throws SQLException {
+    String checkQuery = "SELECT * FROM Login WHERE UserName = ?;";
     String query = "UPDATE Login SET Password = ? WHERE UserName = ?;";
     Connection connection = null;
+    PreparedStatement checkps = null;
     PreparedStatement ps = null;
     ResultSet resultKey = null;
     try {
       connection = connectionManager.getConnection();
+      checkps = connection.prepareStatement(checkQuery);
+      checkps.setString(1,Username);
+      resultKey = checkps.executeQuery();
+      resultKey.next();
+        if(!resultKey.getString(3).equals(oldPassword)){
+          System.out.println("Password incorrect");
+          return false;
+        }
       ps = connection.prepareStatement(query);
       ps.setString(1, newPassword);
       ps.setString(2, Username);
       ps.executeUpdate();
       System.out.println("Successfully update password for UserName: " + Username);
+      return true;
     } catch (SQLException e) {
       e.printStackTrace();
       throw e;

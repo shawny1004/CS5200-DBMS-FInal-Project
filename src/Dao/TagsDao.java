@@ -91,7 +91,28 @@ public class TagsDao {
     }
   }
 
-
+  public boolean checkGivenTagExists(String tagName) throws SQLException {
+    String ps = "SELECT * FROM Tags WHERE TagName=?";
+    Connection connection = null;
+    PreparedStatement updateStmt = null;
+    try {
+      connection = connectionManager.getConnection();
+      updateStmt = connection.prepareStatement(ps);
+      updateStmt.setString(1, tagName);
+      ResultSet rs = updateStmt.executeQuery();
+      return rs.next();
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if(connection != null) {
+        connection.close();
+      }
+      if(updateStmt != null) {
+        updateStmt.close();
+      }
+    }
+  }
 
 
   public List<Tags> getTagsBysimilarTagName(String tagName) throws SQLException {
@@ -134,6 +155,36 @@ public class TagsDao {
       connection = connectionManager.getConnection();
       selectStmt = connection.prepareStatement(ps);
       selectStmt.setString(1, tagName);
+      results = selectStmt.executeQuery();
+      if(results.next()) {
+        return new Tags(results.getInt(1),results.getString(2),results.getString(3));
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if(connection != null) {
+        connection.close();
+      }
+      if(selectStmt != null) {
+        selectStmt.close();
+      }
+      if(results != null) {
+        results.close();
+      }
+    }
+    return null;
+  }
+
+  public Tags getTagByTagID(int tagID) throws SQLException {
+    String ps = "select * from tags where TagID=?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(ps);
+      selectStmt.setInt(1, tagID);
       results = selectStmt.executeQuery();
       if(results.next()) {
         return new Tags(results.getInt(1),results.getString(2),results.getString(3));
