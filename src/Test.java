@@ -1,8 +1,5 @@
 import Dao.*;
-import Model.Contract;
-import Model.CreditCard;
-import Model.FAQ;
-import Model.Users;
+import Model.*;
 
 import java.sql.SQLException;
 import java.sql.Time;
@@ -17,6 +14,7 @@ public class Test {
     UsersDao usersDao = UsersDao.getInstance();
     ContractDao contractDao = ContractDao.getInstance();
     FAQDao faqdao = FAQDao.getInstance();
+    FavoriteDao favoriteDao = FavoriteDao.getInstance();
 
     //initialize creditcard
     String time = "2033-10-02 18:48:05.123456";
@@ -41,6 +39,13 @@ public class Test {
     boolean isAvailable = true;
     int userId = 5;
     FAQ faq1 = new FAQ(faqId, projectId, question, answer, ts2, isAvailable, userId);
+
+    //initialize favorite
+    int favoriteId = 10;
+    String favoriteType = "Resource";
+    int favoriteTypeId = 3322;
+    int userIdForFavorite = 245;
+    Favorite favorite1 = new Favorite(favoriteId, favoriteType, favoriteTypeId, userIdForFavorite);
 
     public void testInsertCredit() throws SQLException {
         String time2 = "2055-05-22 12:13:05";
@@ -127,6 +132,23 @@ public class Test {
         faqdao.updateFAQ(faq1, questionStr, answerStr);
     }
 
+    public void getFavoriteByUsingId() {
+        int userId = 5531;
+        favoriteDao.getFavoriteByUserId(userId);
+    }
+
+    public void deleteFavoriteByUserId() throws SQLException {
+        int userId = 6904;
+        favoriteDao.delete(userId);
+    }
+
+    public void updateFavoriteType() throws SQLException {
+        System.out.println("previous favorite type= " + favorite1.getFavoriteType());
+        String favoriteType = "Project";
+        favoriteDao.updateFavoriteType(favorite1, favoriteType);
+        System.out.println("after update favorite type= " + favorite1.getFavoriteType());
+    }
+
     public static void main(String[] args) throws Exception {
 
         Test test = new Test();
@@ -135,8 +157,8 @@ public class Test {
 //        test.deleteCreditCard();
 //        test.searchUserByUserId();
 //        test.getCreditCardByCreditCString time = "2033-10-02 18:48:05.123456";
-//    Timestamp ts = Timestamp.valueOf(time);
-//    CreditCard creditCard1 = new CreditCard("555666", ts, "556", 2);ard();
+//        Timestamp ts = Timestamp.valueOf(time);
+//        CreditCard creditCard1 = new CreditCard("555666", ts, "556", 2);ard();
 //        test.searchUserByUserId();
 //        test.getAllCreditCards();
 //        test.createContract();
@@ -147,8 +169,10 @@ public class Test {
 //        test.insertFAQ();
 //        test.deleteFAQ();
 //        test.searchFAQByUserId();
-        test.updateFAQ();
+//        test.updateFAQ();
+//        test.getFavoriteByUsingId();
+//        test.deleteFavoriteByUserId();
+//        test.updateFavoriteType();
     }
-
 
 }
