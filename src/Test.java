@@ -1,9 +1,7 @@
-import Dao.ContractDao;
-import Dao.CreditCardDao;
-import Dao.LoginDao;
-import Dao.UsersDao;
+import Dao.*;
 import Model.Contract;
 import Model.CreditCard;
+import Model.FAQ;
 import Model.Users;
 
 import java.sql.SQLException;
@@ -18,6 +16,7 @@ public class Test {
     CreditCardDao creditCardDao = CreditCardDao.getInstance();
     UsersDao usersDao = UsersDao.getInstance();
     ContractDao contractDao = ContractDao.getInstance();
+    FAQDao faqdao = FAQDao.getInstance();
 
     //initialize creditcard
     String time = "2033-10-02 18:48:05.123456";
@@ -31,6 +30,17 @@ public class Test {
     int quantity = 1;
     Timestamp currentTS = new Timestamp(System.currentTimeMillis());
     Contract contract = new Contract(needId, type, TypeId, quantity, currentTS);
+
+    //initialize faq
+    int faqId = 10;
+    int projectId = 3355;
+    String question = "This is a question";
+    String answer = "New Answer";
+    String time2 = "2011-11-22 22:33:44";
+    Timestamp ts2 = Timestamp.valueOf(time2);
+    boolean isAvailable = true;
+    int userId = 5;
+    FAQ faq1 = new FAQ(faqId, projectId, question, answer, ts2, isAvailable, userId);
 
     public void testInsertCredit() throws SQLException {
         String time2 = "2055-05-22 12:13:05";
@@ -86,15 +96,35 @@ public class Test {
         contractDao.deleteContractById(contractId);
     }
 
-    public void getRecentContract(){
-        int lastNDays=3;
+    public void getRecentContract() {
+        int lastNDays = 3;
         contractDao.getRecentContract(lastNDays);
     }
 
     public void updateContractQuantity() throws SQLException {
-        int quantity=50;
-        Contract currentContract=contractDao.getContractById(10);
-        contractDao.updateContract(currentContract,quantity);
+        int quantity = 50;
+        Contract currentContract = contractDao.getContractById(10);
+        contractDao.updateContract(currentContract, quantity);
+    }
+
+    public void insertFAQ() throws SQLException {
+        faqdao.create(faq1);
+    }
+
+    public void deleteFAQ() throws SQLException {
+        int userId = 8048;
+        faqdao.deleteFAQByUserId(userId);
+    }
+
+    public void searchFAQByUserId() throws SQLException {
+        int userId = 678;
+        faqdao.getFAQsByUserId(userId);
+    }
+
+    public void updateFAQ() throws SQLException {
+        String questionStr = "this is a new question";
+        String answerStr = "this is a new answer";
+        faqdao.updateFAQ(faq1, questionStr, answerStr);
     }
 
     public static void main(String[] args) throws Exception {
@@ -110,9 +140,15 @@ public class Test {
 //        test.searchUserByUserId();
 //        test.getAllCreditCards();
 //        test.createContract();
-//        test.getContractById();deleteContractById
+//        test.getContrFAQactById();deleteContractById
 //        test.deleteContractById();
 //        test.getRecentContract();
-        test.updateContractQuantity();
+//        test.updateContractQuantity();
+//        test.insertFAQ();
+//        test.deleteFAQ();
+//        test.searchFAQByUserId();
+        test.updateFAQ();
     }
+
+
 }
