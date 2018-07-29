@@ -1,8 +1,10 @@
 package Servlets;
 
+import Dao.CommentsDao;
 import Dao.LoginDao;
 import Dao.NotificationDao;
 import Dao.ProjectDao;
+import Model.Comments;
 import Model.Favorite;
 import Model.Notification;
 import Model.Project;
@@ -21,17 +23,20 @@ public class MainPageServlet extends HttpServlet {
     HttpSession session = req.getSession();
     String username =(String) session.getAttribute("UserName");
     int userID = (int) session.getAttribute("userID");
+    CommentsDao commentDao=CommentsDao.getInstance();
     ProjectDao projectDao = ProjectDao.getInstance();
     NotificationDao notificationDao = NotificationDao.getInstance();
     try {
       List<Project> myproject = projectDao.getProjectsByUserID(userID);
       List<Notification> myNoti = notificationDao.getNotificationByUserID(userID);
+      List<Comments> myComments=commentDao.getCommentsByUserID(userID);
+      System.out.println("my comment size= "+myComments.size());
       System.out.println(myproject.size()+" projects found for user "+ userID);
+      req.setAttribute("myComments",myComments);
       req.setAttribute("userName",username);
       req.setAttribute("myNoti",myNoti);
       req.setAttribute("myProjects",myproject);
       req.getRequestDispatcher("/Main.jsp").forward(req, resp);
-
     } catch (Exception e) {
       System.out.println(e);
     }

@@ -1,0 +1,14 @@
+body {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.borders {
+    border-left: 1px solid #ddd;
+    margin: -20px;
+    height: 750px;
+    left: 20px;
+
+}
