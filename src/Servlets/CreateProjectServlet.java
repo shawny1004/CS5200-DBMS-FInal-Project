@@ -1,13 +1,8 @@
 package Servlets;
 
-import Dao.NotificationDao;
-import Dao.ProjectDao;
-import Dao.ProjectTagDao;
-import Dao.TagsDao;
-import Model.Notification;
-import Model.Project;
-import Model.ProjectTag;
-import Model.Tags;
+import Dao.*;
+import Model.*;
+
 import java.sql.Timestamp;
 import java.util.List;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +20,7 @@ public class CreateProjectServlet extends HttpServlet {
     TagsDao tagsDao = TagsDao.getInstance();
     ProjectTagDao projectTagDao = ProjectTagDao.getInstance();
     NotificationDao notificationDao = NotificationDao.getInstance();
+    CommentsDao commentsDao = CommentsDao.getInstance();
 
     try {
       String ProjectTitle = req.getParameter("projectTitle");
@@ -58,13 +54,14 @@ public class CreateProjectServlet extends HttpServlet {
       System.out.println("project "+projectID+" created successfully with tags "+tag1ID+" , "+tag2ID+" , "+tag3ID);
 
 
-
+      List<Comments> myComments=commentsDao.getCommentsByUserID(userID);
       List<Project> myproject = projectDao.getProjectsByUserID(userID);
       List<Notification> myNoti = notificationDao.getNotificationByUserID(userID);
       System.out.println(myproject.size()+" projects found for user "+ userID);
       req.setAttribute("userName",username);
       req.setAttribute("myNoti",myNoti);
       req.setAttribute("myProjects",myproject);
+      req.setAttribute("myComments",myComments);
       req.getRequestDispatcher("/Main.jsp").forward(req, resp);
 
     } catch (Exception e) {

@@ -75,4 +75,13 @@
     <url-pattern>/button/*</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>commentServlet</servlet-name>
+    <servlet-class>Servlets.CommentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>commentServlet</servlet-name>
+    <url-pattern>/comment</url-pattern>
+  </servlet-mapping>
+
 </web-app>
