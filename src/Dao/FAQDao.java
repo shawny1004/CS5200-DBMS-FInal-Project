@@ -1,8 +1,6 @@
 package Dao;
 
 import Model.FAQ;
-import com.sun.tools.corba.se.idl.constExpr.Times;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

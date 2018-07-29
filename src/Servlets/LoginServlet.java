@@ -19,8 +19,6 @@ public class LoginServlet extends HttpServlet {
     System.out.println(username);
     System.out.println(password);
     LoginDao loginDao = LoginDao.getInstance();
-
-
     try {
       if (loginDao.login(username, password)) {
         int userID = loginDao.getUserIDbyUserName(username);

@@ -72,12 +72,7 @@ public class Test {
         System.out.println(creditCard.getCvv());
     }
 
-    public void searchUserByUserId() throws SQLException {
-        int userId = 1;
-        Users targetUser = usersDao.findUserByUserId(userId);
-        System.out.println(targetUser.getNickName());
-        System.out.println(targetUser.getEmail());
-    }
+
 
     public void getAllCreditCards() throws SQLException {
         int userId = 1;
