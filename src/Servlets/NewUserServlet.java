@@ -10,11 +10,20 @@ import javax.servlet.http.HttpSession;
 
 public class NewUserServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-    String username = req.getParameter("UserName");
-    String password = req.getParameter("PassWord");
+    String setusername = req.getParameter("UserName");
+    String setpassword = req.getParameter("PassWord");
     LoginDao loginDao = LoginDao.getInstance();
     try {
-//loginDao.create();
+      if (loginDao.create(login)) {
+        int userID = loginDao.getUserIDbyUserName(username);
+        HttpSession session = req.getSession();
+        session.setAttribute("UserName", username);
+        session.setAttribute("userID",userID);
+        resp.sendRedirect("./Login");
+      } else {
+        Writer writer = resp.getWriter();
+        ((PrintWriter) writer).print("Login Failed");
+      }
 
     } catch (Exception e) {
 

@@ -27,9 +27,9 @@ public class LoginServlet extends HttpServlet {
         session.setAttribute("userID",userID);
         resp.sendRedirect("./MainPage");
       } else {
-        Writer writer = resp.getWriter();
-        ((PrintWriter) writer).print("Login Failed");
-      }
+      Writer writer = resp.getWriter();
+      ((PrintWriter) writer).print("Login Failed");
+    }
 
     } catch (Exception e) {
       System.out.println(e);
