@@ -55,16 +55,69 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
+      <file leaf-file-name="ButtonActionServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Servlets/ButtonActionServlet.java">
+=======
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Servlets/LoginServlet.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="520">
               <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+=======
+            <state relative-caret-position="315">
+              <caret line="30" column="53" lean-forward="true" selection-start-line="29" selection-start-column="8" selection-end-line="30" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Dao/LoginDao.java">
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="46" column="19" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Dao/UsersDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="25" column="20" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="CommentServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Servlets/CommentServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="29" column="52" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="52" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="25" column="43" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="43" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
+>>>>>>> a27ad6676ae97a7e1ded5443f494a5544a055d77
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="UpdateComment.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/UpdateComment.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="37" column="60" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="60" />
+=======
       <file pinned="false" current-in-tab="true">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/src/Servlets/NewUserServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="232">
@@ -73,15 +126,57 @@
                 <element signature="e#1132#1133#0" expanded="true" />
                 <element signature="e#1158#1159#0" expanded="true" />
               </folding>
+=======
+        <entry file="file://$PROJECT_DIR$/web/Project.jsp">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Servlets/ChangePasswordServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="29" column="40" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="40" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="CreateProjectServlet.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Servlets/CreateProjectServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/Main.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="62" column="40" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="40" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
+>>>>>>> a27ad6676ae97a7e1ded5443f494a5544a055d77
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="666">
+              <caret line="83" column="20" lean-forward="true" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+=======
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Dao/LoginDao.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="284">
               <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+=======
+            <state relative-caret-position="210">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="37" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
+>>>>>>> a27ad6676ae97a7e1ded5443f494a5544a055d77
             </state>
           </provider>
         </entry>
@@ -94,9 +189,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/src/Servlets/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/Dao/FAQDao.java" />
+        <option value="$PROJECT_DIR$/src/Test.java" />
+=======
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/Servlets/LoginServlet.java" />
         <option value="$PROJECT_DIR$/src/Servlets/NewUserServlet.java" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
       </list>
     </option>
   </component>
@@ -106,10 +207,21 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="340" />
+    <option name="y" value="25" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+=======
   <component name="ProjectFrameBounds" extendedState="1">
     <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="1027" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -122,6 +234,11 @@
             <path>
               <item name="CS5200-DBMS-FInal-Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS5200-DBMS-FInal-Project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS5200-DBMS-FInal-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS5200-DBMS-FInal-Project" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CS5200-DBMS-FInal-Project" type="b2602c69:ProjectViewProjectNode" />
@@ -156,6 +273,13 @@
               <item name="CS5200-DBMS-FInal-Project" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+            </path>
+            <path>
+              <item name="CS5200-DBMS-FInal-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+=======
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
             </path>
           </expand>
           <select />
@@ -172,10 +296,24 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< HEAD
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1532878733239" />
+=======
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="F:/apache-tomcat-9.0.10/webapps" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.25172412" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1532864589303" />
+>>>>>>> a27ad6676ae97a7e1ded5443f494a5544a055d77
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.26551723" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -198,19 +336,44 @@
       <created>1532861197802</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1532858798745</updated>
+      <workItem from="1532858802159" duration="4169000" />
+=======
       <updated>1532861197802</updated>
+<<<<<<< HEAD
       <workItem from="1532861201136" duration="5244000" />
+=======
+      <workItem from="1532861201136" duration="3166000" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
+>>>>>>> a27ad6676ae97a7e1ded5443f494a5544a055d77
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="5244000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="4169000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1865" height="1096" extended-state="6" />
+    <layout>
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" weight="0.32928064" />
+      <window_info anchor="right" id="Palette&#9;" />
+=======
+    <option name="totallyTimeSpent" value="3166000" />
+>>>>>>> a27ad6676ae97a7e1ded5443f494a5544a055d77
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
       <window_info id="Image Layers" />
       <window_info id="UI Designer" />
       <window_info id="Favorites" side_tool="true" />
@@ -272,6 +435,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Servlets/MainPageServlet.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="22">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dao/LoginDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2010">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/People.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dao/FAQDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+=======
         <state relative-caret-position="285">
           <caret line="32" column="37" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="37" />
         </state>
@@ -281,11 +469,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="29" column="40" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="40" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="330">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Servlets/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+=======
         <state relative-caret-position="210">
           <caret line="14" column="37" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="37" />
         </state>
@@ -324,22 +524,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/Project.jsp">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="111">
           <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+=======
+        <state relative-caret-position="195">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
+>>>>>>> a27ad6676ae97a7e1ded5443f494a5544a055d77
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Servlets/LoginServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="240">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Servlets/NewUserServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="520">
           <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+=======
+        <state relative-caret-position="420">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Servlets/CommentServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="29" column="52" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="52" />
+=======
+        <state relative-caret-position="315">
+          <caret line="30" column="53" lean-forward="true" selection-start-line="29" selection-start-column="8" selection-end-line="30" selection-end-column="53" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
+>>>>>>> a27ad6676ae97a7e1ded5443f494a5544a055d77
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Dao/LoginDao.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="284">
           <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="666">
+          <caret line="83" column="20" lean-forward="true" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/UpdateComment.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="37" column="60" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Servlets/CreateProjectServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="32" column="44" lean-forward="true" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+=======
+        <state relative-caret-position="258">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="43" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
+>>>>>>> a27ad6676ae97a7e1ded5443f494a5544a055d77
         </state>
       </provider>
     </entry>
@@ -364,7 +618,11 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
+<<<<<<< HEAD
+                <option value="0.25172412" />
+=======
                 <option value="0.26551723" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
                 <option value="0.5" />
               </list>
             </option>
@@ -412,8 +670,24 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
+<<<<<<< HEAD
+                <option value="0.25172412" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>9.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+=======
                 <option value="0.2" />
                 <option value="0.6" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
               </list>
             </option>
           </splitter-proportions>
@@ -425,7 +699,11 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
+<<<<<<< HEAD
+                <option value="0.25172412" />
+=======
                 <option value="0.26551723" />
+>>>>>>> 3471b4c9ba0c6e2d7088e87df4469f238f13ac33
               </list>
             </option>
           </splitter-proportions>
