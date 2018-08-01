@@ -31,11 +31,11 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>newUserServlet</servlet-name>
+    <servlet-name>NewUserServlet</servlet-name>
     <servlet-class>Servlets.NewUserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>newUserServlet</servlet-name>
+    <servlet-name>NewUserServlet</servlet-name>
     <url-pattern>/newUser</url-pattern>
   </servlet-mapping>
 

@@ -14,9 +14,10 @@ public class NewUserServlet extends HttpServlet {
     String password = req.getParameter("PassWord");
     LoginDao loginDao = LoginDao.getInstance();
     try {
-
+//loginDao.create();
 
     } catch (Exception e) {
+
       System.out.println(e);
     }
   }
