@@ -12,10 +12,15 @@
 
     <head>
         <title>My HomePage</title>
+        <style>
+            body {
+                background-image: linear-gradient(to bottom, #e6edf1, #badae4, #8ac8d1, #55b6b7, #06a396);
+            }
+        </style>
     </head>
 
     <body>
-        <h1> Hello ${userName.toString()} </h1>
+        <b></b><h1> Hello ${userName.toString()} </h1></b>
         <h1> ${changepassword.toString()} </h1>
 
         <h3> My Notification </h3>
