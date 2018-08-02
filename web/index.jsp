@@ -11,7 +11,7 @@
     <title>Talkie Movie ^_^</title>
   </head>
   <body>
-  <h2>${newuser.toString}</h2>
+  <h2>${newUser.toString()}</h2>
   <form method="post" action="login">
     <input type="text" name="UserName"> Username </input>
     <input type="password" name="PassWord"> Password </input>

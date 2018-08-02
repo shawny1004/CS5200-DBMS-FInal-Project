@@ -12,10 +12,10 @@
 </head>
 <body>
 <form method="post" action="newUser">
-    <input type="text" id="newUserName"> Username </input>
-    <input type="password" id="newPassWord"> Password </input>
-    <input type="text" id="nickName"> Nickname </input>
-    <input type="text" id="email"> Email </input>
+    <input type="text" name="newUserName"> Username </input>
+    <input type="password" name="newPassWord"> Password </input>
+    <input type="text" name="nickName"> Nickname </input>
+    <input type="text" name="email"> Email </input>
     <button type="submit">Register</button>
 </form>
 
