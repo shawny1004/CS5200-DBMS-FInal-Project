@@ -93,14 +93,6 @@ public class CommentServlet extends HttpServlet {
                 session = request.getSession();
                 int userIDUpdated = (int) session.getAttribute("userID");
                 username = (String) session.getAttribute("UserName");
-                //System.out.println(projectUpdatedID);
-                //System.out.println(contentUpdatedStr);
-                //System.out.println(currentTSUpdated);
-                //System.out.println(availableUpdated);
-                //System.out.println(replyCommentIDUpdated);
-                //System.out.println(dislikeCountUpdated);
-                //System.out.println(likeCount);
-                //System.out.println(userIDUpdated);
 
                 Comments updatedComment = new Comments(commentIdUpdated, projectUpdatedID, contentUpdatedStr, currentTSUpdated, availableUpdated,
                         replyCommentIDUpdated, dislikeCountUpdated, likeCount, userIDUpdated);

@@ -30,11 +30,11 @@
 </p>
 <h2>${newUser.toString()}</h2>
 <form method="post" action="login">
-    <center><table style="with: 80%">
+   <table style="with: 80%">
         <tr>
             <td>Username</td>
             <td><input type="text" name="UserName"></td>
-        </tr></center>
+        </tr>
         <tr>
             <td>Password</td></center>
             <td><input type="password" name="PassWord"></td>
@@ -42,11 +42,10 @@
     </table>
 
     <button type="submit">LogIn</button>
-
-    <button type="submit">
-        <a href="CreateAccount.jsp">Create Your Account</a>
-    </button>
 </form>
+  <input type="button" value="Create Account"
+         onclick="javascrtpt:window.location.href='CreateAccount.jsp'">
+
 </center>
 </body>
 </html>

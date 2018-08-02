@@ -23,6 +23,12 @@
         <b></b><h1> Hello ${userName.toString()} </h1></b>
         <h1> ${changepassword.toString()} </h1>
 
+        <input type="button" value="Browse Actors"
+               onclick="javascrtpt:window.location.href='./getPeople'">
+
+        <input type="button" value="Browse Resources"
+               onclick="javascrtpt:window.location.href='./getResources'">
+
         <h3> My Notification </h3>
         <form action="button/deleNoti">
             <table border="1">

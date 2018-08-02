@@ -27,8 +27,8 @@ public class LoginServlet extends HttpServlet {
         session.setAttribute("userID",userID);
         resp.sendRedirect("./MainPage");
       } else {
-      Writer writer = resp.getWriter();
-      ((PrintWriter) writer).print("Login Failed");
+      req.setAttribute("newUser","Login Failed!");
+      req.getRequestDispatcher("./index.jsp").forward(req,resp);
     }
 
     } catch (Exception e) {
