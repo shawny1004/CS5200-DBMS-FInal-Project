@@ -35,7 +35,7 @@ public class CreditCardDao {
             connection = connectionManager.getConnection();
             insertStmt = connection.prepareStatement(insertCredits);
             insertStmt.setString(1, creditCard.getCardNumber());
-            insertStmt.setTimestamp(2, creditCard.getExpiration());
+            insertStmt.setDate(2, creditCard.getExpiration());
             insertStmt.setString(3, creditCard.getCvv());
             insertStmt.setInt(4, creditCard.getUserID());
             insertStmt.executeUpdate();
@@ -49,9 +49,9 @@ public class CreditCardDao {
     }
 
     //update credit card expiration date
-    public CreditCard updateExpiration(CreditCard creditCard, Timestamp newExpiration) throws SQLException {
+    public CreditCard updateExpiration(CreditCard creditCard, Date newExpiration) throws SQLException {
         String updateCreditCards = "UPDATE CreditCard SET Expiration=? WHERE CardNumber=?;";
-        System.out.println("update timeStamp");
+        System.out.println("update Date");
         System.out.println("update sql = " + updateCreditCards);
         Connection connection = null;
         PreparedStatement updateStmt = null;
@@ -59,7 +59,7 @@ public class CreditCardDao {
         try {
             connection = connectionManager.getConnection();
             updateStmt = connection.prepareStatement(updateCreditCards);
-            updateStmt.setTimestamp(1, newExpiration);
+            updateStmt.setDate(1, newExpiration);
             updateStmt.setString(2, creditCard.getCardNumber());
             updateStmt.executeUpdate();
         } catch (SQLException e) {
@@ -109,7 +109,7 @@ public class CreditCardDao {
             UsersDao usersDao = UsersDao.getInstance();
             if (results.next()) {
                 String resultCardNumber = results.getString("CardNumber");
-                Timestamp expiration = results.getTimestamp("Expiration");
+                Date expiration = results.getDate("Expiration");
                 String CVV = results.getString("CVV");
                 int userId = results.getInt("userId");
                 CreditCard creditCard = new CreditCard(resultCardNumber, expiration, CVV, userId);
@@ -149,7 +149,7 @@ public class CreditCardDao {
             UsersDao usersDao = UsersDao.getInstance();
             while (results.next()) {
                 String resultCardNumber = results.getString("CardNumber");
-                Timestamp expiration = results.getTimestamp("Expiration");
+                Date expiration = results.getDate("Expiration");
                 String CVV = results.getString("CVV");
                 CreditCard creditCard = new CreditCard(resultCardNumber, expiration, CVV, userId);
                 creditCards.add(creditCard);

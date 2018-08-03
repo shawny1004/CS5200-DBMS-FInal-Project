@@ -106,14 +106,8 @@ public class CommentServlet extends HttpServlet {
                         replyCommentIDUpdated, dislikeCountUpdated, likeCount, userIDUpdated);
                 try {
                     commentsDao.updateComment(updatedComment);
-                    List<Comments> myComments = commentsDao.getCommentsByUserID(userIDUpdated);
-                    List<Notification> myNoti = notificationDao.getNotificationByUserID(userIDUpdated);
-                    List<Project> myproject = projectDao.getProjectsByUserID(userIDUpdated);
-                    request.setAttribute("myComments", myComments);
-                    request.setAttribute("userName", username);
-                    request.setAttribute("myNoti", myNoti);
-                    request.setAttribute("myProjects", myproject);
-                    request.getRequestDispatcher("/Main.jsp").forward(request, response);
+
+                    request.getRequestDispatcher("/MainPage").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -150,17 +144,8 @@ public class CommentServlet extends HttpServlet {
                 System.out.println("comment id= " + commentId);
                 try {
                     commentsDao.deleteCommentByCommentID(commentId);
-                    HttpSession session = request.getSession();
-                    String username = (String) session.getAttribute("UserName");
-                    int userID = (int) session.getAttribute("userID");
-                    List<Comments> myComments = commentsDao.getCommentsByUserID(userID);
-                    List<Notification> myNoti = notificationDao.getNotificationByUserID(userID);
-                    List<Project> myproject = projectDao.getProjectsByUserID(userID);
-                    request.setAttribute("myComments", myComments);
-                    request.setAttribute("userName", username);
-                    request.setAttribute("myNoti", myNoti);
-                    request.setAttribute("myProjects", myproject);
-                    request.getRequestDispatcher("/Main.jsp").forward(request, response);
+
+                    request.getRequestDispatcher("/MainPage").forward(request, response);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

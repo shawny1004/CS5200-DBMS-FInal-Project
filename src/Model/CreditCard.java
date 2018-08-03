@@ -1,15 +1,16 @@
 package Model;
 
-import java.sql.Timestamp;
+
+import java.sql.Date;
 
 public class CreditCard {
 
   private String cardNumber;
-  private Timestamp expiration;
+  private Date expiration;
   private String cvv;
   private int userID;
 
-  public CreditCard(String cardNumber, Timestamp expiration, String cvv, int userID) {
+  public CreditCard(String cardNumber, Date expiration, String cvv, int userID) {
     this.cardNumber = cardNumber;
     this.expiration = expiration;
     this.cvv = cvv;
@@ -24,11 +25,11 @@ public class CreditCard {
     this.cardNumber = cardNumber;
   }
 
-  public Timestamp getExpiration() {
+  public Date getExpiration() {
     return expiration;
   }
 
-  public void setExpiration(Timestamp expiration) {
+  public void setExpiration (Date expiration) {
     this.expiration = expiration;
   }
 
