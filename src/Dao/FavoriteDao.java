@@ -36,7 +36,7 @@ public class FavoriteDao {
             connection = connectionManager.getConnection();
             insertStmt = connection.prepareStatement(inseretFavorite);
             insertStmt.setString(1, favorite.getFavoriteType());
-            insertStmt.setInt(2, favorite.getFavoriteID());
+            insertStmt.setInt(2, favorite.getFavoriteTypeID());
             insertStmt.setInt(3, favorite.getUserID());
             insertStmt.executeUpdate();
         } catch (SQLException e) {
@@ -69,7 +69,7 @@ public class FavoriteDao {
                     favoriteType = results.getString("FavoriteType");
                 }
                 int favoriteTypeId = results.getInt("FavoriteTypeId");
-                Favorite favorite = new Favorite(favoriteType, favoriteTypeId, userId);
+                Favorite favorite = new Favorite(results.getInt(1),favoriteType, favoriteTypeId, userId);
                 favorites.add(favorite);
             }
 
@@ -93,6 +93,31 @@ public class FavoriteDao {
             deleteStmt.setInt(1, userId);
             deleteStmt.executeUpdate();
             return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+            if (deleteStmt != null) {
+                deleteStmt.close();
+            }
+        }
+    }
+
+    public void deleteByFavID(int favID) throws SQLException {
+        String deleteFavorite = "DELETE FROM Favorite WHERE FavoriteID=?;";
+        Connection connection = null;
+        PreparedStatement deleteStmt = null;
+        System.out.println("delete favorite by favorite Id");
+        System.out.println(deleteFavorite);
+        try {
+            connection = connectionManager.getConnection();
+            deleteStmt = connection.prepareStatement(deleteFavorite);
+            deleteStmt.setInt(1, favID);
+            deleteStmt.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
             throw e;

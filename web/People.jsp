@@ -12,11 +12,22 @@
     <title>People</title>
 </head>
 <body>
+<h1>${publishInfo.toString()}</h1>
+<h1>${contactInfo.toString()}</h1>
+<h1>${addFav.toString()}</h1>
 
 <button onClick="javascript:window.location='./MainPage'"> Back to Main Page</button>
-<h2> Discover People </h2>
+<h2> Discover People </h2></br>
 
-<button onClick="javascript:window.location='./PublishPeople'"> Publish Myself</button>
+<form method="get" action="./PublishPeople"></br>
+    FirstName <input type="text" name="firstName"></br>
+    LastName  <input type="text" name="lastName"></br>
+    Description  <input type="text" name="description"></br>
+    Occupation  <input type="text" name="occupation"></br>
+    HourlyRate  <input type="text" name="hourlyRate"></br>
+    <button type="submit">Publish Myself</button>
+</form>
+
 
 <form method="get" action="./SearchPeople">
     PeopleID  <input type="text" name="PeopleID"> </input></br>
@@ -37,6 +48,7 @@
         <td>HourlyRate</td>
         <td>UserID</td>
         <td>Contact</td>
+        <td>Fav</td>
     </tr>
 
     <c:forEach items="${peopleList}" var="people">
@@ -49,6 +61,7 @@
             <td>${people.getHourlyRate()}</td>
             <td>${people.getUserID()}</td>
             <td><button onClick="javascript:window.location='./ContactPeople?PeopleID=${people.getPeopleID()}'">Contact</button></td>
+            <td><button onClick="javascript:window.location='./AddFavPeople?PeopleID=${people.getPeopleID()}'">Add Favorate</button></td>
         </tr>
     </c:forEach>
 </table>

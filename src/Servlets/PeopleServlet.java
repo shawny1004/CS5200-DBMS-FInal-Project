@@ -1,9 +1,12 @@
 package Servlets;
 
+import Dao.FavoriteDao;
 import Dao.NotificationDao;
 import Dao.PeopleDao;
+import Model.Favorite;
 import Model.Notification;
 import Model.People;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 import javax.servlet.http.HttpServlet;
@@ -62,7 +65,7 @@ public class PeopleServlet extends HttpServlet {
             List<People> PeopleList = peopleDao.getRandomPeople();
             NotificationDao notificationDao = NotificationDao.getInstance();
             notificationDao.create(new Notification(new Timestamp(System.currentTimeMillis()), username +" is interested in You !",false, "normal",
-                Integer.valueOf(req.getParameter("PeopleID"))));
+                peopleDao.getPeopleByID(Integer.valueOf(req.getParameter("PeopleID"))).getUserID()));
             req.setAttribute("contactInfo","Contact Notification successfully sent to People "+req.getParameter("PeopleID"));
             req.setAttribute("peopleList", PeopleList);
             req.getRequestDispatcher("./People.jsp").forward(req, resp);
@@ -73,7 +76,29 @@ public class PeopleServlet extends HttpServlet {
 
         case "PublishPeople":
           try {
+            String firstName = req.getParameter("firstName");
+            String lastName = req.getParameter("lastName");
+            String description = req.getParameter("description");
+            String occupation = req.getParameter("occupation");
+            int rate = Integer.valueOf(req.getParameter("hourlyRate"));
+            Date date = new Date(0);
+            People result = peopleDao.create(new People(firstName,lastName,description,occupation,date,rate,userID));
             List<People> PeopleList = peopleDao.getRandomPeople();
+            req.setAttribute("publishInfo","Successfully published yourself! Your ID is " + result.getPeopleID());
+            req.setAttribute("peopleList", PeopleList);
+            req.getRequestDispatcher("./People.jsp").forward(req, resp);
+          } catch (Exception e) {
+            System.out.println(e);
+          }
+          break;
+
+        case "AddFavPeople":
+          try {
+            int peopleID = Integer.valueOf(req.getParameter("PeopleID"));
+            FavoriteDao favoriteDao = FavoriteDao.getInstance();
+            favoriteDao.createFavorite(new Favorite("People",peopleID,userID));
+            List<People> PeopleList = peopleDao.getRandomPeople();
+            req.setAttribute("addFav","Successfully add favorite People "+req.getParameter("PeopleID"));
             req.setAttribute("peopleList", PeopleList);
             req.getRequestDispatcher("./People.jsp").forward(req, resp);
           } catch (Exception e) {

@@ -21,6 +21,7 @@ public class MainPageServlet extends HttpServlet {
     CommentsDao commentDao=CommentsDao.getInstance();
     ProjectDao projectDao = ProjectDao.getInstance();
     NotificationDao notificationDao = NotificationDao.getInstance();
+    FavoriteDao favoriteDao = FavoriteDao.getInstance();
     // credit card
     CreditCardDao creditCardDao = CreditCardDao.getInstance();
 
@@ -30,6 +31,7 @@ public class MainPageServlet extends HttpServlet {
       List<Comments> myComments=commentDao.getCommentsByUserID(userID);
       //
       List<CreditCard> myCreditCard = creditCardDao.getCreditCardsByUserId(userID);
+      List<Favorite> myFav = favoriteDao.getFavoriteByUserId(userID);
 
       System.out.println("my comment size= "+myComments.size());
       System.out.println(myproject.size()+" projects found for user "+ userID);
@@ -37,6 +39,7 @@ public class MainPageServlet extends HttpServlet {
       req.setAttribute("userName",username);
       req.setAttribute("myNoti",myNoti);
       req.setAttribute("myProjects",myproject);
+      req.setAttribute("myFav",myFav);
       //
       req.setAttribute("myCreditCard",myCreditCard);
       req.getRequestDispatcher("/Main.jsp").forward(req, resp);

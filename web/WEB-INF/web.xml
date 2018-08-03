@@ -59,6 +59,10 @@
     <servlet-name>PeopleServlet</servlet-name>
     <url-pattern>/SearchPeople</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PeopleServlet</servlet-name>
+    <url-pattern>/AddFavPeople</url-pattern>
+  </servlet-mapping>
 
   <servlet>
     <servlet-name>ResourcesServlet</servlet-name>
@@ -66,7 +70,23 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ResourcesServlet</servlet-name>
-    <url-pattern>/getResources</url-pattern>
+    <url-pattern>/getResource</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResourcesServlet</servlet-name>
+    <url-pattern>/PublishResource</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResourcesServlet</servlet-name>
+    <url-pattern>/ContactResource</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResourcesServlet</servlet-name>
+    <url-pattern>/SearchResource</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResourcesServlet</servlet-name>
+    <url-pattern>/AddFavResource</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -76,6 +96,15 @@
   <servlet-mapping>
     <servlet-name>projectItemServlet</servlet-name>
     <url-pattern>/projectItem/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>FavServlet</servlet-name>
+    <servlet-class>Servlets.FavServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FavServlet</servlet-name>
+    <url-pattern>/DeleteFav</url-pattern>
   </servlet-mapping>
 
   <servlet>

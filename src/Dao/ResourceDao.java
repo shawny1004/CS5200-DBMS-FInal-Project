@@ -282,4 +282,111 @@ public class ResourceDao {
       }
     }
   }
+
+  public List<Resource> getRandomResource() throws SQLException {
+    List<Resource> result = new ArrayList<>();
+    String selectResource = "select * from Resource Order By rand() LIMIT 20;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(selectResource);
+      results = selectStmt.executeQuery();
+      while (results.next()) {
+        result.add(new Resource(results.getInt(1), results.getString(2), results.getString(3),
+            results.getInt(4), results.getInt(5), results.getInt(6)));
+      }
+      return result;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
+      }
+    }
+  }
+
+  public List<Resource> getResourceByCondition(int ResourceID,String type, int quant, int rate) throws SQLException {
+    List<Resource> result = new ArrayList<>();
+    String selectResource = "select * from Resource where ResourceID>0";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+
+      if(ResourceID>0) {
+        selectResource += (" AND ResourceID=" + ResourceID);
+      }
+      if(type.length()>0) {
+        selectResource += (" AND Type='" + type+"'");
+      }
+      if(quant>0) {
+        selectResource += (" AND Quantity>=" + quant+"");
+      }
+      if(rate>0) {
+        selectResource += ( " AND HourlyRate<=" + rate);
+      }
+      selectStmt = connection.prepareStatement(selectResource);
+      System.out.println(selectStmt);
+      results = selectStmt.executeQuery();
+      while (results.next()) {
+        result.add(new Resource(results.getInt(1), results.getString(2), results.getString(3),
+            results.getInt(4), results.getInt(5), results.getInt(6)));
+      }
+      return result;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
+      }
+    }
+  }
+
+  public Resource getResourceByID(int ResourceID) throws SQLException {
+    String selectResource = "select * from Resource where ResourceID=?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(selectResource);
+      selectStmt.setInt(1, ResourceID);
+      results = selectStmt.executeQuery();
+      if(results.next()) {
+        return new Resource(results.getInt(1), results.getString(2), results.getString(3),
+            results.getInt(4), results.getInt(5), results.getInt(6));
+      }
+      else return null;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
+      }
+    }
+  }
 }

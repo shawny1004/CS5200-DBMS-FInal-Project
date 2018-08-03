@@ -22,12 +22,13 @@
     <body>
         <b></b><h1> Hello ${userName.toString()} </h1></b>
         <h1> ${changepassword.toString()} </h1>
+        <h1> ${DeleteInfo.toString()} </h1>
 
         <input type="button" value="Browse Actors"
                onclick="javascrtpt:window.location.href='./getPeople'">
 
         <input type="button" value="Browse Resources"
-               onclick="javascrtpt:window.location.href='./getResources'">
+               onclick="javascrtpt:window.location.href='./getResource'">
 
         <h3> My Notification </h3>
         <form action="button/deleNoti">
@@ -55,6 +56,27 @@
                 </c:forEach>
             </table>
         </form>
+
+        <h3> My Favorites </h3>
+
+            <table border="1">
+                <tr>
+                    <td>FavoriteID</td>
+                    <td>Type</td>
+                    <td>ItemID</td>
+                    <td>Delete</td>
+                </tr>
+
+                <c:forEach items="${myFav}" var="item">
+                    <tr>
+                        <td>${item.getFavoriteID()}</td>
+                        <td>${item.getFavoriteType()}</td>
+                        <td>${item.getFavoriteTypeID()}</td>
+                        <td><button onClick="javascript:window.location='./DeleteFav?FavID=${item.getFavoriteID()}'">Remove Favorite</button></td>
+                    </tr>
+                </c:forEach>
+            </table>
+
 
         <h3> My Projects </h3>
         <button onClick="javascript:window.location='./CreateProject.jsp'"> Create new Project</button>

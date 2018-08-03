@@ -98,6 +98,38 @@ public class PeopleDao {
     }
   }
 
+  public People getPeopleByID(int peopleID) throws SQLException {
+    String selectPeople = "select * from People where PeopleID=?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(selectPeople);
+      selectStmt.setInt(1, peopleID);
+      results = selectStmt.executeQuery();
+      if(results.next()) {
+        return new People(results.getInt(1), results.getString(2), results.getString(3),
+            results.getString(4), results.getString(5), results.getDate(6), results.getInt(7),
+            results.getInt(8));
+      }
+      else return null;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
+      }
+    }
+  }
+
   public List<People> getRandomPeople() throws SQLException {
     List<People> result = new ArrayList<>();
     String selectPeople = "select * from People Order By rand() LIMIT 20;";
