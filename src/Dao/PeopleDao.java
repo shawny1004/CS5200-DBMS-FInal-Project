@@ -260,18 +260,30 @@ public class PeopleDao {
 
   public List<People> getPeopleByCondition(int peopleID,String firstName, String lastName, String occupation,int rate) throws SQLException {
     List<People> result = new ArrayList<>();
-    String selectPeople = "select * from People where PeopleID=? OR FirstName=? OR LastName=? OR Occupation=? OR HourlyRate<=?;";
+    String selectPeople = "select * from People where PeopleID>0";
     Connection connection = null;
     PreparedStatement selectStmt = null;
     ResultSet results = null;
     try {
       connection = connectionManager.getConnection();
+
+      if(peopleID>0) {
+        selectPeople += (" AND PeopleID=" + peopleID);
+      }
+      if(firstName.length()>0) {
+        selectPeople += (" AND FirstName=" + firstName+"'");
+      }
+      if(lastName.length()>0) {
+        selectPeople += (" AND LastName='" + lastName+"'");
+      }
+      if(occupation.length()>0) {
+        selectPeople += (" AND Occupation='" + occupation)+"'";
+      }
+      if(rate>0) {
+        selectPeople += ( " AND HourlyRate<=" + rate);
+      }
       selectStmt = connection.prepareStatement(selectPeople);
-      selectStmt.setInt(1, peopleID);
-      selectStmt.setString(2, firstName);
-      selectStmt.setString(3, lastName);
-      selectStmt.setString(4, occupation);
-      selectStmt.setInt(5, rate);
+      System.out.println(selectStmt);
       results = selectStmt.executeQuery();
       while (results.next()) {
         result.add(new People(results.getInt(1), results.getString(2), results.getString(3),
