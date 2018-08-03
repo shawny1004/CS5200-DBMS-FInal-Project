@@ -40,6 +40,36 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>PeopleServlet</servlet-name>
+    <servlet-class>Servlets.PeopleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PeopleServlet</servlet-name>
+    <url-pattern>/getPeople</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PeopleServlet</servlet-name>
+    <url-pattern>/PublishPeople</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PeopleServlet</servlet-name>
+    <url-pattern>/ContactPeople</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PeopleServlet</servlet-name>
+    <url-pattern>/SearchPeople</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ResourcesServlet</servlet-name>
+    <servlet-class>Servlets.ResourceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResourcesServlet</servlet-name>
+    <url-pattern>/getResources</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
   <servlet-name>projectItemServlet</servlet-name>
   <servlet-class>Servlets.ProjectServlet</servlet-class>
 </servlet>

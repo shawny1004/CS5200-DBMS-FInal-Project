@@ -98,6 +98,38 @@ public class PeopleDao {
     }
   }
 
+  public List<People> getRandomPeople() throws SQLException {
+    List<People> result = new ArrayList<>();
+    String selectPeople = "select * from People Order By rand() LIMIT 20;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(selectPeople);
+      results = selectStmt.executeQuery();
+      while (results.next()) {
+        result.add(new People(results.getInt(1), results.getString(2), results.getString(3),
+            results.getString(4), results.getString(5), results.getDate(6), results.getInt(7),
+            results.getInt(8)));
+      }
+      return result;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
+      }
+    }
+  }
+
   public List<People> getPeopleByHourlyRate(boolean ifLarger,int amount) throws SQLException {
     List<People> result = new ArrayList<>();
     String selectPeople;
@@ -222,6 +254,43 @@ public class PeopleDao {
       }
       if (selectStmt != null) {
         selectStmt.close();
+      }
+    }
+  }
+
+  public List<People> getPeopleByCondition(int peopleID,String firstName, String lastName, String occupation,int rate) throws SQLException {
+    List<People> result = new ArrayList<>();
+    String selectPeople = "select * from People where PeopleID=? OR FirstName=? OR LastName=? OR Occupation=? OR HourlyRate<=?;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(selectPeople);
+      selectStmt.setInt(1, peopleID);
+      selectStmt.setString(2, firstName);
+      selectStmt.setString(3, lastName);
+      selectStmt.setString(4, occupation);
+      selectStmt.setInt(5, rate);
+      results = selectStmt.executeQuery();
+      while (results.next()) {
+        result.add(new People(results.getInt(1), results.getString(2), results.getString(3),
+            results.getString(4), results.getString(5), results.getDate(6), results.getInt(7),
+            results.getInt(8)));
+      }
+      return result;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
       }
     }
   }

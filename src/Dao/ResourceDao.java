@@ -64,6 +64,37 @@ public class ResourceDao {
     }
   }
 
+  public List<Resource> getRandomRes() throws SQLException {
+    List<Resource> result = new ArrayList<>();
+    String selectResource = "select * from Resource Order By rand() LIMIT 20;";
+    Connection connection = null;
+    PreparedStatement selectStmt = null;
+    ResultSet results = null;
+    try {
+      connection = connectionManager.getConnection();
+      selectStmt = connection.prepareStatement(selectResource);
+      results = selectStmt.executeQuery();
+      while (results.next()) {
+        result.add(new Resource(results.getInt(1), results.getString(2), results.getString(3),
+            results.getInt(4), results.getInt(5), results.getInt(6)));
+      }
+      return result;
+    } catch (SQLException e) {
+      e.printStackTrace();
+      throw e;
+    } finally {
+      if (connection != null) {
+        connection.close();
+      }
+      if (selectStmt != null) {
+        selectStmt.close();
+      }
+      if (results != null) {
+        results.close();
+      }
+    }
+  }
+
   public List<Resource> getResourceByType(String type) throws SQLException {
     List<Resource> result = new ArrayList<>();
     String selectResource = "select * from Resource where type=?;";
