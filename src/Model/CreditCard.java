@@ -10,6 +10,7 @@ public class CreditCard {
   private String cvv;
   private int userID;
 
+
   public CreditCard(String cardNumber, Date expiration, String cvv, int userID) {
     this.cardNumber = cardNumber;
     this.expiration = expiration;
@@ -29,7 +30,7 @@ public class CreditCard {
     return expiration;
   }
 
-  public void setExpiration (Date expiration) {
+  public void setExpirationDate (Date expiration) {
     this.expiration = expiration;
   }
 
@@ -47,5 +48,14 @@ public class CreditCard {
 
   public void setUserID(int userID) {
     this.userID = userID;
+  }
+
+  public String getMask(){
+    return getCardNumber().substring(getCardNumber().length()-4);
+  }
+
+  // covert the Date to String to be used in JSP
+  public String getExpirDate(){
+    return getExpiration().getYear()+"/"+getExpiration().getMonth();
   }
 }

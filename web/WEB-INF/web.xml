@@ -143,5 +143,18 @@
     <url-pattern>/comment</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>CreditCardServlet</servlet-name>
+    <servlet-class>Servlets.CreditCardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreditCardServlet</servlet-name>
+    <url-pattern>/AddCard</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CreditCardServlet</servlet-name>
+    <url-pattern>/DeleteCard</url-pattern>
+  </servlet-mapping>
+
 </web-app>
 

@@ -71,14 +71,14 @@ public class CreditCardDao {
     }
 
     //delete credit card information
-    public CreditCard deleteCredit(CreditCard creditCard) throws SQLException {
+    public CreditCard deleteCreditbyCardNum(String creditCardNum) throws SQLException {
         String deleteCreditCards = "DELETE FROM CreditCard WHERE CardNumber=?;";
         Connection connection = null;
         PreparedStatement deleteStmt = null;
         try {
             connection = connectionManager.getConnection();
             deleteStmt = connection.prepareStatement(deleteCreditCards);
-            deleteStmt.setString(1, creditCard.getCardNumber());
+            deleteStmt.setString(1, creditCardNum);
             deleteStmt.executeUpdate();
             return null;
         } catch (SQLException e) {

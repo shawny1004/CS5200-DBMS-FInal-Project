@@ -101,11 +101,7 @@
                 </tr>
             </c:forEach>
         </table>
-
-        <form action="./SearchProject">
-            <textarea>search</textarea>
-            <button type="submit"> Search!</button>
-        </form>
+        
 
         <%--display comment--%>
         <h3> My Comments </h3>
@@ -144,6 +140,37 @@
                 </tr>
             </c:forEach>
         </table>
+
+
+        <h3> My Credit Card </h3>
+
+        <form method="get" action="./AddCard"></br>
+            Card Number <input type="text" name="creditCardNum"></br>
+            Expiration Date  <input type="text" name="expiration"> Example:2020/01</br>
+            CVV  <input type="password" name="cvv"></br>
+            <button type="submit">Add Card</button>
+        </form>
+
+        <table border="1">
+            <tr>
+                <td>Card Number</td>
+                <td>Expiration Date</td>
+                <td>Delete</td>
+            </tr>
+
+            <c:forEach items="${myCreditCard}" var="item">
+                <tr>
+                    <td>Ending with ${item.getMask()}</td>
+                    <td>${item.getExpirDate()}</td>
+                    <td><button onClick="javascript:window.location='./DeleteCard?creditCardNum=${item.getCardNumber()}'">Remove Credit Card</button></td>
+                </tr>
+            </c:forEach>
+        </table>
+
+
+
+
+
 
         <h3>Change My Password</h3>
         <form method="post" action="changePassword">
