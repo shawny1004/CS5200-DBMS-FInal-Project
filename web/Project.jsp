@@ -12,26 +12,26 @@
 
 <head>
     <title>Project ${currentProject.getProjectID()}</title>
-    <script>
-      function like1() {
-        <%ProjectDao.getInstance().addLikeBy1(((Project)request.getAttribute("currentProject")).getProjectID());%>
-      }
 
-      function dislike1() {
-        <%ProjectDao.getInstance().addDislikeBy1(((Project)request.getAttribute("currentProject")).getProjectID());%>
-      }
-    </script>
 </head>
 
 <body>
+
+<button onClick="javascript:window.location='./MainPage'">
+    Back to Main Page
+</button>
 <h1> ${currentProject.getTitle()} </h1>
 <h2>by</h2>
 <h2>${projectUserName}</h2>
 
 <h3>${currentProject.getLikedCount()}</h3>
-<button onclick=like1()>Like</button>
+<button onClick="javascript:window.location='./LikeProj?ProjectID=${currentProject.getProjectID()}'">
+    Like
+</button>
 <h3>${currentProject.getDislikedCount()}</h3>
-<button onclick=dislike1()>DisLike</button>
+<button onClick="javascript:window.location='./UnLiProj?ProjectID=${currentProject.getProjectID()}'">
+    DisLike
+</button>
 
 <textarea id="description" rows="15" cols="300"> ${currentProject.getDescription()} </textarea>
 

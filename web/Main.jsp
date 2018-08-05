@@ -31,7 +31,7 @@
                onclick="javascrtpt:window.location.href='./getResource'">
 
         <h3> My Notification </h3>
-        <form action="button/deleNoti">
+
             <table border="1">
                 <tr>
                     <td>NotificationID</td>
@@ -50,12 +50,12 @@
                         <td>${item.isViewed()}</td>
                         <td>${item.getType()}</td>
                         <td>
-                            <button type="submit" name="deletebutton">Delete:${item.getNotificationID()}</button>
+                            <button onClick="javascript:window.location='./DeleNoti?NotiID=${item.getNotificationID()}'">Delete</button>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
-        </form>
+
 
         <h3> My Favorites </h3>
 
@@ -93,7 +93,7 @@
             <c:forEach items="${myProjects}" var="project">
                 <tr>
                     <td>${project.getProjectID()}</td>
-                    <td><a href="projectItem/${project.getProjectID()}"> ${project.getTitle()} </a></td>
+                    <td><a href="projectItem?ProjectID=${project.getProjectID()}"> ${project.getTitle()} </a></td>
                     <td>${project.getDescription()}</td>
                     <td>${project.getCreateTime()}</td>
                     <td>${project.getDislikedCount()}</td>
