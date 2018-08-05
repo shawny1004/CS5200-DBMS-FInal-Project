@@ -14,41 +14,41 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class ButtonActionServlet extends HttpServlet {
+
   public void doGet(HttpServletRequest req, HttpServletResponse resp) {
-    HttpSession session = req.getSession();
-    String username =(String) session.getAttribute("UserName");
-    int userID = (int) session.getAttribute("userID");
     ProjectDao projectDao = ProjectDao.getInstance();
-
     NotificationDao notificationDao = NotificationDao.getInstance();
-
     String url = req.getRequestURI();
     int index = url.lastIndexOf("/");
-    String activity = url.substring(index+1,index+5);
-    String object = url.substring(index+5,index+9);
-    int id = Integer.parseInt(req.getParameter("deletebutton").substring(7));
+    String activity = url.substring(index + 1, index + 5);
+    String object = url.substring(index + 5, index + 9);
 
-    System.out.println("url="+url);
-    System.out.println("activity="+activity);
-    System.out.println("object="+object);
-    System.out.println("id="+id);
+    System.out.println("url=" + url);
+    System.out.println("activity=" + activity);
+    System.out.println("object=" + object);
 
     try {
-    if(activity.equals("dele")&&object.equals("Noti")){
-      notificationDao.delete(id);
-    }
-      List<Project> myproject = projectDao.getProjectsByUserID(userID);
-      List<Notification> myNoti = notificationDao.getNotificationByUserID(userID);
-      System.out.println(myproject.size()+" projects found for user "+ userID);
-      req.setAttribute("userName",username);
-      req.setAttribute("myNoti",myNoti);
-      req.setAttribute("myProjects",myproject);
-      req.getRequestDispatcher("/Main.jsp").forward(req, resp);
+      if (activity.equals("Dele") && object.equals("Noti")) {
+        int id = Integer.parseInt(req.getParameter("NotiID"));
+        notificationDao.delete(id);
+        req.getRequestDispatcher("/MainPage").forward(req, resp);
+      }
+      if (activity.equals("Like") && object.equals("Proj")) {
+        int ProjectID = Integer.valueOf(req.getParameter("ProjectID"));
+        projectDao.addLikeBy1(ProjectID);
+        req.getRequestDispatcher("/projectItem?ProjectID=" + ProjectID).forward(req, resp);
+      }
+      if (activity.equals("UnLi") && object.equals("Proj")) {
+        int ProjectID = Integer.valueOf(req.getParameter("ProjectID"));
+        projectDao.addDislikeBy1(ProjectID);
+        req.getRequestDispatcher("/projectItem?ProjectID=" + ProjectID).forward(req, resp);
+      }
 
     } catch (Exception e) {
       System.out.println(e);
     }
   }
+
   public void doPost(HttpServletRequest req, HttpServletResponse resp) {
     doGet(req, resp);
   }

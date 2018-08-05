@@ -17,7 +17,7 @@ public class ProjectServlet extends HttpServlet {
   public void doGet(HttpServletRequest req, HttpServletResponse resp) {
     String url = req.getRequestURI();
     int index = url.lastIndexOf("/");
-    int projectID = Integer.parseInt(url.substring(index + 1));
+    int projectID = Integer.valueOf(req.getParameter("ProjectID"));
     ProjectDao projectDao = ProjectDao.getInstance();
     LoginDao loginDao = LoginDao.getInstance();
     TagsDao tagsDao = TagsDao.getInstance();
@@ -29,7 +29,7 @@ public class ProjectServlet extends HttpServlet {
         String projectUsername  = loginDao.getUserNamebyUserID(currentProject.getUserID());
         req.setAttribute("projectUserName", projectUsername);
         ArrayList<Integer> tagsIDList = projectTagDao.getTagsIDsByProjectID(projectID);
-        System.out.println(tagsIDList.size() + "tags found");
+        System.out.println(tagsIDList.size() + " tags found");
         ArrayList<Tags> tagsList = new ArrayList<>();
         for(int i=0;i<tagsIDList.size();i++){
           tagsList.add(tagsDao.getTagByTagID(tagsIDList.get(i)));

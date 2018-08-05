@@ -12,14 +12,14 @@
 
 </head>
 <body>
-<form method="post" action="CreateProject">
-    ProjectTitle  <input type="text" name="projectTitle"> </input>
-    Project Description <input type="text" name="Description"> </input>
-    Project Tag1 <input type="text" name="Tag1"> </input>
-    Project Tag2 <input type="text" name="Tag2"> </input>
-    Project Tag3 <input type="text" name="Tag3"> </input>
+<br method="post" action="CreateProject">
+    ProjectTitle  <input type="text" name="projectTitle"> </input></br>
+    Project Description <input type="text" name="Description"> </input></br>
+    Project Tag1 <input type="text" name="Tag1"> </input></br>
+    Project Tag2 <input type="text" name="Tag2"> </input></br>
+    Project Tag3 <input type="text" name="Tag3"> </input></br>
     
-    <button type="submit">Create</button>
+    <button type="submit">Create</button></br>
 </form>
 </body>
 </html>
