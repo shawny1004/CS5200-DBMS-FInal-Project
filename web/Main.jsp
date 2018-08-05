@@ -101,7 +101,7 @@
                 </tr>
             </c:forEach>
         </table>
-        
+
 
         <%--display comment--%>
         <h3> My Comments </h3>
@@ -167,10 +167,7 @@
             </c:forEach>
         </table>
 
-
-
-
-
+x
 
         <h3>Change My Password</h3>
         <form method="post" action="changePassword">

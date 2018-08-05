@@ -22,6 +22,7 @@
     </b>
 </head>
 </div>
+<center>
 <body>
 <p>
     <font color="#636e72" face="Comic Sans MS" size="3.5">
