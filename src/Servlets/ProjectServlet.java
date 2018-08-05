@@ -1,9 +1,8 @@
 package Servlets;
 
-import Dao.LoginDao;
-import Dao.ProjectDao;
-import Dao.ProjectTagDao;
-import Dao.TagsDao;
+import Dao.*;
+import Model.Comments;
+import Model.Need;
 import Model.Project;
 import Model.Tags;
 import java.util.ArrayList;
@@ -22,11 +21,20 @@ public class ProjectServlet extends HttpServlet {
     LoginDao loginDao = LoginDao.getInstance();
     TagsDao tagsDao = TagsDao.getInstance();
     ProjectTagDao projectTagDao = ProjectTagDao.getInstance();
+    NeedDao needsDao=NeedDao.getInstance();
+    CommentsDao commentsDao=CommentsDao.getInstance();
     try {
       Project currentProject = projectDao.getProjectByID(projectID);
       if (currentProject != null) {
         req.setAttribute("currentProject", currentProject);
         String projectUsername  = loginDao.getUserNamebyUserID(currentProject.getUserID());
+        //get commentlist
+        List<Comments> commentsList = commentsDao.getCommentsByProjectID(projectID);
+        System.out.println("project size= "+commentsList.size());
+        //get needsList
+        List<Need> needList=needsDao.getNeedsByProjectID(projectID);
+        System.out.println("need size= "+needList.size());
+
         req.setAttribute("projectUserName", projectUsername);
         ArrayList<Integer> tagsIDList = projectTagDao.getTagsIDsByProjectID(projectID);
         System.out.println(tagsIDList.size() + " tags found");
@@ -35,6 +43,8 @@ public class ProjectServlet extends HttpServlet {
           tagsList.add(tagsDao.getTagByTagID(tagsIDList.get(i)));
         }
         req.setAttribute("tagsList", tagsList);
+        req.setAttribute("commentsList",commentsList);
+        req.setAttribute("needList",needList);
       }
       req.getRequestDispatcher("/Project.jsp").forward(req, resp);
     } catch (Exception e) {
