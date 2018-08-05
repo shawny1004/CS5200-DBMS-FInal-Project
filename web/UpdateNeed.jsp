@@ -31,7 +31,8 @@
                 src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/additional-methods.min.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body background="./image/91807f89d8fd1b9f91e4d22cf1f3f594.jpg">
+    <body>
+    <%--<body background="./image/91807f89d8fd1b9f91e4d22cf1f3f594.jpg">--%>
         <h3>Edit Need @.@</h3>
         <h3>NeedId: ${need.getNeedID()}</h3>
         <form role="form" action="need" method="POST"}>
